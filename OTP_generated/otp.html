@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OTP Generator</title>
+    <style>
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>OTP Generator</h1>
+        <input type="email" id="email" placeholder="Enter your email" required>
+        <button onclick="generateAndSendOTP()">Send OTP</button>
+        <div class="otp-message" id="otp-message"></div>
+    </div>
+
+    <script>
+        function generateOTP() {
+            // Generate a 4-digit OTP
+            const otp = Math.floor(1000 + Math.random() * 9000);
+            return otp.toString();
+        }
+       // console.log(generateOTP());
+
+        function generateAndSendOTP() {
+            const email = document.getElementById('email').value;
+            const otp = generateOTP();
+
+            // Simulate sending the OTP via email
+            const otpMessage = document.getElementById('otp-message');
+            if (email) {
+                otpMessage.textContent = `OTP sent to ${email}: ${otp}`;
+            } else {
+                otpMessage.textContent = 'Please enter a valid email address.';
+            }
+        }
+    </script>
+</body>
+</html>
